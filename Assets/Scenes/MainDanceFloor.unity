@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1001 &302238045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,12 +233,16 @@ PrefabInstance:
       value: 3.5448
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.8748782
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -142.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41
+      value: -101
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -381,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &405115996
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &614453711
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &709613072
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &749124066
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &792935018
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &851679298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,12 +1088,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.6885
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42
+      value: -82
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1226,6 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1064182162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,6 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1096068328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1160581433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1001 &1229099176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1530,12 +1549,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.6885
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58.586147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42
+      value: -83
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1c5cbef979d49a0bfb449f8a03168d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1679,6 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1473977874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1546811926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1560289955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,6 +1996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1671895526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,6 +2094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1710404290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1743724307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!114 &1743724312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2275,6 +2305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1773390379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1863361169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,6 +2501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1891833686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2566,6 +2599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &1921228623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &2052222136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1 &2081472412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,6 +2987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeInterval: 1
+  transitionDuration: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
