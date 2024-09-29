@@ -3,9 +3,15 @@ using UnityEngine;
 /// <summary>
 /// Controls animation triggers and initiates commentary generation based on user input.
 /// </summary>
-public class animControllerAlex : MonoBehaviour
+public class AnimControllerAlex : MonoBehaviour
 {
     public Animator anim;
+
+    [Header("Score Settings")]
+    [SerializeField]
+    private int minScore = 6;
+    [SerializeField]
+    private int maxScore = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +72,7 @@ public class animControllerAlex : MonoBehaviour
 
     /// <summary>
     /// Triggers the specified animation and initiates commentary generation.
+    /// Also updates the player's score with a random value between minScore and maxScore.
     /// </summary>
     /// <param name="triggerName">The name of the animation trigger.</param>
     /// <param name="commentary">The commentary text to generate.</param>
@@ -90,6 +97,20 @@ public class animControllerAlex : MonoBehaviour
         else
         {
             Debug.LogError("CommentaryManager instance not found.");
+        }
+
+        // Generate a random score between minScore and maxScore
+        int earnedPoints = Random.Range(minScore, maxScore + 1); // Inclusive upper bound
+        Debug.Log($"Points Earned: {earnedPoints}");
+
+        // Add the earned points to the player's score
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(earnedPoints);
+        }
+        else
+        {
+            Debug.LogError("GameManager instance not found.");
         }
     }
 }
