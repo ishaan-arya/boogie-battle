@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Controls animation triggers and initiates commentary generation based on user input.
@@ -88,7 +89,6 @@ public class AnimControllerKunal : MonoBehaviour
         {
             Debug.LogError("Animator not assigned.");
         }
-
         // Initiate commentary generation asynchronously
         if (CommentaryManager.Instance != null)
         {
@@ -113,5 +113,14 @@ public class AnimControllerKunal : MonoBehaviour
         {
             Debug.LogError("GameManager instance not found.");
         }
+    }
+
+    IEnumerator WaitAndPrint()
+    {
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2.0f);
+        
+        // This will be printed after 2 seconds
+        Debug.Log("2 seconds have passed!");
     }
 }
