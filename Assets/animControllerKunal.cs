@@ -56,15 +56,15 @@ public class AnimControllerKunal : MonoBehaviour
         {
             TriggerAction("bdVar1Trigger", "Kunal showcases BD variant 1");
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             TriggerAction("bdVar4Trigger", "Kunal masters BD variant 4");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             TriggerAction("celeTrigger", "Kunal celebrates with a fantastic move");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             TriggerAction("backflipTrigger", "Kunal performs a daring backflip");
         }
