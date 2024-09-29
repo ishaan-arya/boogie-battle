@@ -90,9 +90,8 @@ public class CommentaryManager : MonoBehaviour
             groqAIApiKey = config.GROQ_API_KEY;
             cartesiaApiKey = config.CARTESIA_API_KEY;
 
-
             Debug.Log("API keys loaded successfully.");
-        }
+=        }
         else
         {
             Debug.LogError("config.json file not found at: " + configFilePath);
@@ -107,6 +106,7 @@ public class CommentaryManager : MonoBehaviour
     public void GenerateCommentary(string currentAction)
     {
         // Create the prompt with past commentary
+        Debug.Log("Generating commentary for: " + currentAction);
         string prompt = CreatePrompt(currentAction);
         Debug.Log("Generated Prompt:\n" + prompt);
 

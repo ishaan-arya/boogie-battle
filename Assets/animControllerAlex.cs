@@ -92,6 +92,7 @@ public class AnimControllerAlex : MonoBehaviour
         // Initiate commentary generation asynchronously
         if (CommentaryManager.Instance != null)
         {
+            Debug.Log("Generating commentary for: " + commentary);
             CommentaryManager.Instance.GenerateCommentary(commentary);
         }
         else
