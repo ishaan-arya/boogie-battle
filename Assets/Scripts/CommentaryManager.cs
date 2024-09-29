@@ -135,7 +135,7 @@ public class CommentaryManager : MonoBehaviour
         promptBuilder.AppendLine(currentAction);
 
         // Add instructions
-        promptBuilder.AppendLine("\nProvide exciting and fun commentary accordingly. Keep your commentary terse and brief. Example 1: Kunal stuns the audience with his trademark moonwalk. James better watch out!");
+        promptBuilder.AppendLine("\nProvide exciting and fun commentary accordingly. Keep your commentary EXTREMELY terse and brief. Example 1: Ishaan stuns the audience with his trademark moonwalk. Alex better watch out!");
 
         return promptBuilder.ToString();
     }

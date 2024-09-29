@@ -31,49 +31,55 @@ public class AnimControllerKunal : MonoBehaviour
         // Detect key presses and trigger corresponding actions
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            TriggerAction("hiphopTrigger", "Kunal performs a hiphop dance move");
+            TriggerAction("hiphopTrigger", "Ishaan performs a hiphop dance move");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            TriggerAction("bdToFreezeTrigger", "Kunal executes a moonwalk");
+            TriggerAction("bdToFreezeTrigger", "Ishaan hits the crowd with a freeze move");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            TriggerAction("moonwalkTrigger", "Kunal showcases an impressive moonwalk");
+            TriggerAction("moonwalkTrigger", "Ishaan showcases an impressive moonwalk");
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            TriggerAction("flairTrigger", "Kunal adds some flashy flair moves");
+            TriggerAction("flairTrigger", "Ishaan adds some flashy flair moves");
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            TriggerAction("cheerTrigger", "Kunal cheers the crowd with energy");
+            TriggerAction("cheerTrigger", "Ishaan cheers the crowd with energy");
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            TriggerAction("bdSwipesTrigger", "Kunal executes impressive BD swipes");
+            TriggerAction("bdSwipesTrigger", "Ishaan executes an impressive swipe");
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            TriggerAction("bdVar1Trigger", "Kunal showcases BD variant 1");
+            TriggerAction("bdVar1Trigger", "Ishaan executes a breakdance move");
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            TriggerAction("bdVar4Trigger", "Kunal masters BD variant 4");
+            TriggerAction("bdVar4Trigger", "Ishaan executes a breakdance move");
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            TriggerAction("celeTrigger", "Kunal celebrates with a fantastic move");
+            TriggerAction("celeTrigger", "Ishaan starts celebrating");
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            TriggerAction("backflipTrigger", "Kunal performs a daring backflip");
+            TriggerAction("backflipTrigger", "Ishaan performs a daring backflip");
         }
     }
 
     /// <summary>
     /// Triggers the specified animation and initiates commentary generation.
     /// Also updates the player's score with a random value between minScore and maxScore.
+    /// </summary>
+    /// <param name="triggerName">The name of the animation trigger.</param>
+    /// <param name="commentary">The commentary text to generate.</param>
+    /// <summary>
+    /// Triggers the specified animation and initiates commentary generation.
+    /// Also updates Player 2's score with a random value between minScore and maxScore.
     /// </summary>
     /// <param name="triggerName">The name of the animation trigger.</param>
     /// <param name="commentary">The commentary text to generate.</param>
@@ -85,42 +91,21 @@ public class AnimControllerKunal : MonoBehaviour
             anim.SetTrigger(triggerName);
             Debug.Log($"Animation Triggered: {triggerName}");
         }
-        else
-        {
-            Debug.LogError("Animator not assigned.");
-        }
+
         // Initiate commentary generation asynchronously
         if (CommentaryManager.Instance != null)
         {
-            Debug.Log("Generating commentary for: " + commentary);
             CommentaryManager.Instance.GenerateCommentary(commentary);
-        }
-        else
-        {
-            Debug.LogError("CommentaryManager instance not found.");
         }
 
         // Generate a random score between minScore and maxScore
-        int earnedPoints = Random.Range(minScore, maxScore + 1); // Inclusive upper bound
-        Debug.Log($"Points Earned: {earnedPoints}");
+        int earnedPoints = Random.Range(minScore, maxScore + 1);
 
-        // Add the earned points to the player's score
+        // Add the earned points to Player 2's score
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.AddScore(earnedPoints);
-        }
-        else
-        {
-            Debug.LogError("GameManager instance not found.");
+            GameManager.Instance.AddScorePlayer2(earnedPoints);
         }
     }
-
-    IEnumerator WaitAndPrint()
-    {
-        // Wait for 2 seconds
-        yield return new WaitForSeconds(2.0f);
-        
-        // This will be printed after 2 seconds
-        Debug.Log("2 seconds have passed!");
-    }
+    
 }
