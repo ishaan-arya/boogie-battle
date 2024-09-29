@@ -50,19 +50,19 @@ public class AnimControllerAlex : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            TriggerAction("bdSwipesTrigger", "Alex executes impressive BD swipes");
+            TriggerAction("bdSwipesTrigger", "Alex executes a clean swipe");
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            TriggerAction("bdVar1Trigger", "Alex showcases BD variant 1");
+            TriggerAction("bdVar1Trigger", "Alex showcases a cool breakdance move");
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            TriggerAction("bdVar4Trigger", "Alex masters BD variant 4");
+            TriggerAction("bdVar4Trigger", "Alex executes a breakdance move");
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
-            TriggerAction("celeTrigger", "Alex celebrates with a fantastic move");
+            TriggerAction("celeTrigger", "Alex celebrates");
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -84,34 +84,20 @@ public class AnimControllerAlex : MonoBehaviour
             anim.SetTrigger(triggerName);
             Debug.Log($"Animation Triggered: {triggerName}");
         }
-        else
-        {
-            Debug.LogError("Animator not assigned.");
-        }
 
         // Initiate commentary generation asynchronously
         if (CommentaryManager.Instance != null)
         {
-            Debug.Log("Generating commentary for: " + commentary);
             CommentaryManager.Instance.GenerateCommentary(commentary);
-        }
-        else
-        {
-            Debug.LogError("CommentaryManager instance not found.");
         }
 
         // Generate a random score between minScore and maxScore
-        int earnedPoints = Random.Range(minScore, maxScore + 1); // Inclusive upper bound
-        Debug.Log($"Points Earned: {earnedPoints}");
+        int earnedPoints = Random.Range(minScore, maxScore + 1);
 
-        // Add the earned points to the player's score
+        // Add the earned points to Player 1's score
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.AddScore(earnedPoints);
-        }
-        else
-        {
-            Debug.LogError("GameManager instance not found.");
+            GameManager.Instance.AddScorePlayer1(earnedPoints);
         }
     }
 }

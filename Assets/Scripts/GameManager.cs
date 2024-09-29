@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -10,25 +11,48 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int initialScore = 0;
 
-    private int playerScore;
+    private int player1Score;
+    private int player2Score;
 
-    // Property to access the player's score
-    public int PlayerScore
+    // UI Elements for displaying scores
+    [Header("UI Elements")]
+    public Text player1ScoreText; // Assign via Inspector
+    public Text player2ScoreText; // Assign via Inspector
+
+    // Properties to access each player's score
+    public int Player1Score
     {
-        get { return playerScore; }
+        get { return player1Score; }
         private set
         {
-            if (playerScore != value)
+            if (player1Score != value)
             {
-                playerScore = value;
-                // Invoke the event
-                OnScoreChanged?.Invoke(playerScore);
+                player1Score = value;
+                // Update the UI and invoke event
+                OnPlayer1ScoreChanged?.Invoke(player1Score);
+                UpdatePlayer1ScoreUI();
             }
         }
     }
 
-    // Event triggered when the score changes
-    public event Action<int> OnScoreChanged;
+    public int Player2Score
+    {
+        get { return player2Score; }
+        private set
+        {
+            if (player2Score != value)
+            {
+                player2Score = value;
+                // Update the UI and invoke event
+                OnPlayer2ScoreChanged?.Invoke(player2Score);
+                UpdatePlayer2ScoreUI();
+            }
+        }
+    }
+
+    // Events triggered when the scores change
+    public event Action<int> OnPlayer1ScoreChanged;
+    public event Action<int> OnPlayer2ScoreChanged;
 
     void Awake()
     {
@@ -46,30 +70,68 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Initializes game variables.
+    /// Initializes game variables, including both players' scores.
     /// </summary>
     private void InitializeGame()
     {
-        PlayerScore = initialScore;
-        Debug.Log($"Game Initialized. Starting Score: {PlayerScore}");
+        Player1Score = initialScore;
+        Player2Score = initialScore;
+        UpdatePlayer1ScoreUI();
+        UpdatePlayer2ScoreUI();
+        Debug.Log($"Game Initialized. Player 1 Score: {Player1Score}, Player 2 Score: {Player2Score}");
     }
 
     /// <summary>
-    /// Adds a specified amount to the player's score.
+    /// Adds a specified amount to Player 1's score.
     /// </summary>
     /// <param name="points">Points to add.</param>
-    public void AddScore(int points)
+    public void AddScorePlayer1(int points)
     {
-        PlayerScore += points;
-        Debug.Log($"Score Added: {points}. New Score: {PlayerScore}");
+        Player1Score += points;
+        Debug.Log($"Player 1 Score Added: {points}. New Score: {Player1Score}");
     }
 
     /// <summary>
-    /// Resets the player's score to the initial value.
+    /// Adds a specified amount to Player 2's score.
     /// </summary>
-    public void ResetScore()
+    /// <param name="points">Points to add.</param>
+    public void AddScorePlayer2(int points)
     {
-        PlayerScore = initialScore;
-        Debug.Log($"Score Reset. Current Score: {PlayerScore}");
+        Player2Score += points;
+        Debug.Log($"Player 2 Score Added: {points}. New Score: {Player2Score}");
+    }
+
+    /// <summary>
+    /// Resets both players' scores to the initial value.
+    /// </summary>
+    public void ResetScores()
+    {
+        Player1Score = initialScore;
+        Player2Score = initialScore;
+        UpdatePlayer1ScoreUI();
+        UpdatePlayer2ScoreUI();
+        Debug.Log($"Scores Reset. Player 1 Score: {Player1Score}, Player 2 Score: {Player2Score}");
+    }
+
+    /// <summary>
+    /// Updates the UI element for Player 1's score.
+    /// </summary>
+    private void UpdatePlayer1ScoreUI()
+    {
+        if (player1ScoreText != null)
+        {
+            player1ScoreText.text = "Player 1 Score: " + player1Score;
+        }
+    }
+
+    /// <summary>
+    /// Updates the UI element for Player 2's score.
+    /// </summary>
+    private void UpdatePlayer2ScoreUI()
+    {
+        if (player2ScoreText != null)
+        {
+            player2ScoreText.text = "Player 2 Score: " + player2Score;
+        }
     }
 }
