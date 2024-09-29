@@ -91,7 +91,7 @@ public class CommentaryManager : MonoBehaviour
             cartesiaApiKey = config.CARTESIA_API_KEY;
 
             Debug.Log("API keys loaded successfully.");
-=        }
+        }
         else
         {
             Debug.LogError("config.json file not found at: " + configFilePath);

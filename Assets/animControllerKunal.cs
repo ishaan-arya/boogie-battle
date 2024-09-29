@@ -28,31 +28,31 @@ public class AnimControllerKunal : MonoBehaviour
     void Update()
     {
         // Detect key presses and trigger corresponding actions
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             TriggerAction("hiphopTrigger", "Kunal performs a hiphop dance move");
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             TriggerAction("bdToFreezeTrigger", "Kunal executes a moonwalk");
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             TriggerAction("moonwalkTrigger", "Kunal showcases an impressive moonwalk");
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             TriggerAction("flairTrigger", "Kunal adds some flashy flair moves");
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             TriggerAction("cheerTrigger", "Kunal cheers the crowd with energy");
         }
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             TriggerAction("bdSwipesTrigger", "Kunal executes impressive BD swipes");
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             TriggerAction("bdVar1Trigger", "Kunal showcases BD variant 1");
         }
@@ -60,11 +60,11 @@ public class AnimControllerKunal : MonoBehaviour
         {
             TriggerAction("bdVar4Trigger", "Kunal masters BD variant 4");
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             TriggerAction("celeTrigger", "Kunal celebrates with a fantastic move");
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             TriggerAction("backflipTrigger", "Kunal performs a daring backflip");
         }
