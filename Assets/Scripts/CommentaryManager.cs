@@ -29,7 +29,7 @@ public class CommentaryManager : MonoBehaviour
     [SerializeField]
     private string cartesiaVersion = "2024-06-10"; // Assign the appropriate version
     [SerializeField]
-    private string cartesiaModelId = "sonic-english"; // Assign the desired model ID
+    private string cartesiaModelId = "sonic-english";
     [SerializeField]
     private string cartesiaVoiceId = "8eb90615-1780-4809-90c3-76c5d2ecc7d2"; // Assign the desired voice ID
     [SerializeField]

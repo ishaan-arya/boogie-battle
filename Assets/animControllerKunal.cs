@@ -83,6 +83,6 @@ public class animController : MonoBehaviour
                 isAnimating = true;
             }
         }
-            // key code 1
+
     }
 }
