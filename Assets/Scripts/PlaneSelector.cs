@@ -30,18 +30,15 @@ public class PlaneSelector : MonoBehaviour
 
         if (selectedPlanes.Contains(planeName))
         {
-            // Deselect the plane if it's already selected
             DeselectPlane(planeName);
         }
         else
         {
-            // If two planes are already selected, deselect the first one
             if (selectedPlanes.Count >= 2)
             {
                 DeselectPlane(selectedPlanes[0]);
             }
 
-            // Select the new plane
             SelectPlane(planeName);
         }
     }
@@ -49,12 +46,14 @@ public class PlaneSelector : MonoBehaviour
     void SelectPlane(string planeName)
     {
         selectedPlanes.Add(planeName);
-        planeLightMap[planeName].color = Color.yellow; // Set the light to yellow
+        GameData.SelectedPlayers.Add(planeName);
+        planeLightMap[planeName].color = Color.yellow;
     }
 
     void DeselectPlane(string planeName)
     {
         selectedPlanes.Remove(planeName);
-        planeLightMap[planeName].color = Color.white; // Reset the light color
+        GameData.SelectedPlayers.Remove(planeName);
+        planeLightMap[planeName].color = Color.white;
     }
 }
