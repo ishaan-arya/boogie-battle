@@ -1,93 +1,95 @@
 using UnityEngine;
 
-public class animController : MonoBehaviour
+/// <summary>
+/// Controls animation triggers and initiates commentary generation based on user input.
+/// </summary>
+public class animControllerKunal : MonoBehaviour
 {
     public Animator anim;
-    private bool isAnimating = false;  // Track whether an animation is currently playing
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        if (anim == null)
+        {
+            Debug.LogError("Animator component not found on this GameObject.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Get the current state of the animator
-        // Check if an animation is playing
-        if (isAnimating)
+        // Detect key presses and trigger corresponding actions
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-            print(stateInfo.normalizedTime);  // Print the normalized time of the current animation state
-            // Check if the animation has finished (normalizedTime >= 1 means it finished)
-            if (stateInfo.normalizedTime >= 1.0f && !anim.IsInTransition(0))
-            {
-                isAnimating = false;  // Re-enable input once animation finishes
-            }
-            return;
+            TriggerAction("hiphopTrigger", "Kunal performs a hiphop dance move");
         }
-        else {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                anim.SetTrigger("hiphopTrigger");
-                isAnimating = true; 
-            }
-            // bd-to-freeze key code 2
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                anim.SetTrigger("bdToFreezeTrigger");
-                isAnimating = true;
-            }
-            // moonwalk key code 3
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                anim.SetTrigger("moonwalkTrigger");
-                isAnimating = true;
-            }
-            // flair key code 4
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                anim.SetTrigger("flairTrigger");
-                isAnimating = true;
-            }
-            // cheer key code 5
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                anim.SetTrigger("cheerTrigger");
-                isAnimating = true;
-            }
-            // bd-swipes
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                anim.SetTrigger("bdSwipesTrigger");
-                isAnimating = true;
-            }
-            // bd-var1
-            if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                anim.SetTrigger("bdVar1Trigger");
-                isAnimating = true;
-            }
-            // bd-var4
-            if (Input.GetKeyDown(KeyCode.Alpha8))
-            {
-                anim.SetTrigger("bdVar4Trigger");
-                isAnimating = true;
-            }
-            // cele
-            if (Input.GetKeyDown(KeyCode.Alpha9))
-            {
-                anim.SetTrigger("celeTrigger");
-                isAnimating = true;
-            }
-            // backflip
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                anim.SetTrigger("backflipTrigger");
-                isAnimating = true;
-            }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            TriggerAction("bdToFreezeTrigger", "Kunal executes a moonwalk");
         }
-            // key code 1
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            TriggerAction("moonwalkTrigger", "Kunal showcases an impressive moonwalk");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            TriggerAction("flairTrigger", "Kunal adds some flashy flair moves");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            TriggerAction("cheerTrigger", "Kunal cheers the crowd with energy");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            TriggerAction("bdSwipesTrigger", "Kunal executes impressive BD swipes");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            TriggerAction("bdVar1Trigger", "Kunal showcases BD variant 1");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            TriggerAction("bdVar4Trigger", "Kunal masters BD variant 4");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            TriggerAction("celeTrigger", "Kunal celebrates with a fantastic move");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            TriggerAction("backflipTrigger", "Kunal performs a daring backflip");
+        }
+    }
+
+    /// <summary>
+    /// Triggers the specified animation and initiates commentary generation.
+    /// </summary>
+    /// <param name="triggerName">The name of the animation trigger.</param>
+    /// <param name="commentary">The commentary text to generate.</param>
+    private void TriggerAction(string triggerName, string commentary)
+    {
+        // Trigger the animation
+        if (anim != null)
+        {
+            anim.SetTrigger(triggerName);
+            Debug.Log($"Animation Triggered: {triggerName}");
+        }
+        else
+        {
+            Debug.LogError("Animator not assigned.");
+        }
+
+        // Initiate commentary generation asynchronously
+        if (CommentaryManager.Instance != null)
+        {
+            CommentaryManager.Instance.GenerateCommentary(commentary);
+        }
+        else
+        {
+            Debug.LogError("CommentaryManager instance not found.");
+        }
     }
 }
