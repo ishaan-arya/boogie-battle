@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class animController : MonoBehaviour
 {
@@ -16,10 +17,12 @@ public class animController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool b = anim.GetBool("hiphopTrigger");
+        print(b);
         // Get the current state of the animator
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         // You can use the flag to trigger other behaviors
-        if (stateInfo.fullPathHash != specificStateHash)
+        if (stateInfo.fullPathHash != specificStateHash && stateInfo.normalizedTime >= 2)
         
         {
             isAnimating = true;  // Block input while animation is playing
@@ -35,7 +38,11 @@ public class animController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 anim.SetTrigger("hiphopTrigger");
-                isAnimating = true;  // Set to true after triggering an animation
+                b = anim.GetBool("hiphopTrigger");
+                bool c = anim.GetBool("bdToFreezeTrigger");
+                print(b);
+                print(c);
+
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
@@ -84,5 +91,14 @@ public class animController : MonoBehaviour
             }
         }
 
+    }
+
+    IEnumerator WaitAndPrint()
+    {
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2.0f);
+        
+        // This will be printed after 2 seconds
+        Debug.Log("2 seconds have passed!");
     }
 }
