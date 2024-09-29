@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Text;
+using System.IO;
 
 /// <summary>
 /// Manages the generation and display of real-time commentary in the dance battle game.
@@ -18,14 +19,12 @@ public class CommentaryManager : MonoBehaviour
     public Text commentaryText; // Assign via Inspector
 
     [Header("AI Settings")]
-    [SerializeField]
-    private string groqAIApiKey = "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"; // Assign via Inspector or secure storage
+    private string groqAIApiKey; // Loaded from config.json
     [SerializeField]
     private string groqAIEndpoint = "https://api.groq.com/openai/v1/chat/completions";
 
     [Header("TTS Settings")]
-    [SerializeField]
-    private string cartesiaApiKey = "7486332f-55ae-4194-b6ff-14ebedebf3ae"; // Assign via Inspector or secure storage
+    private string cartesiaApiKey; // Loaded from config.json
     [SerializeField]
     private string cartesiaVersion = "2024-06-10"; // Assign the appropriate version
     [SerializeField]
@@ -45,6 +44,8 @@ public class CommentaryManager : MonoBehaviour
     [Header("Audio Playback")]
     public AudioSource audioSource; // Assign via Inspector
 
+    private string configFilePath;
+
     void Awake()
     {
         // Implement Singleton Pattern
@@ -56,12 +57,45 @@ public class CommentaryManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         // Ensure AudioSource is assigned
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Define the config file path (inside StreamingAssets)
+        configFilePath = Path.Combine(Application.dataPath, "config.json");
+
+        // Load the API keys from the JSON file
+        LoadAPIKeys();
+    }
+
+    /// <summary>
+    /// Loads the API keys from config.json
+    /// </summary>
+    private void LoadAPIKeys()
+    {
+        if (File.Exists(configFilePath))
+        {
+            // Read the JSON content from the file
+            string jsonContent = File.ReadAllText(configFilePath);
+
+            // Deserialize the JSON into a Config object
+            Config config = JsonUtility.FromJson<Config>(jsonContent);
+
+            // Assign the API keys from the config to variables
+            groqAIApiKey = config.GROQ_API_KEY;
+            cartesiaApiKey = config.CARTESIA_API_KEY;
+
+
+            Debug.Log("API keys loaded successfully.");
+        }
+        else
+        {
+            Debug.LogError("config.json file not found at: " + configFilePath);
         }
     }
 
@@ -290,10 +324,13 @@ public class CommentaryManager : MonoBehaviour
 
     // Classes to handle JSON serialization/deserialization
 
-    /// <summary>
-    /// Represents the request payload sent to Groq's API.
-    /// Updated to use 'messages' for chat completions.
-    /// </summary>
+    [System.Serializable]
+    public class Config
+    {
+        public string GROQ_API_KEY;
+        public string CARTESIA_API_KEY;
+    }
+
     [System.Serializable]
     public class GroqRequest
     {
@@ -301,12 +338,8 @@ public class CommentaryManager : MonoBehaviour
         public List<Message> messages;
         public int max_tokens;
         public float temperature;
-        // You can add more parameters here if needed, such as top_p, n, etc.
     }
 
-    /// <summary>
-    /// Represents a single message in the chat (either from user or assistant).
-    /// </summary>
     [System.Serializable]
     public class Message
     {
@@ -314,10 +347,6 @@ public class CommentaryManager : MonoBehaviour
         public string content;
     }
 
-    /// <summary>
-    /// Represents a single choice in the response from Groq's API.
-    /// Updated to include 'message' instead of 'text'.
-    /// </summary>
     [System.Serializable]
     public class GroqChoice
     {
@@ -326,9 +355,6 @@ public class CommentaryManager : MonoBehaviour
         public string finish_reason;
     }
 
-    /// <summary>
-    /// Represents the full response from Groq's API.
-    /// </summary>
     [System.Serializable]
     public class GroqResponse
     {
@@ -340,9 +366,6 @@ public class CommentaryManager : MonoBehaviour
         public Usage usage;
     }
 
-    /// <summary>
-    /// Represents the usage statistics in the response from Groq's API.
-    /// </summary>
     [System.Serializable]
     public class Usage
     {
@@ -351,9 +374,6 @@ public class CommentaryManager : MonoBehaviour
         public int total_tokens;
     }
 
-    /// <summary>
-    /// Represents the request payload sent to Cartesia's TTS API.
-    /// </summary>
     [System.Serializable]
     public class CartesiaTTSRequest
     {
@@ -361,25 +381,15 @@ public class CommentaryManager : MonoBehaviour
         public string transcript;
         public CartesiaVoice voice;
         public CartesiaOutputFormat output_format;
-        // Optional parameters
-        // public int duration;
-        // public string language;
     }
 
-    /// <summary>
-    /// Represents the voice configuration for Cartesia's TTS API.
-    /// </summary>
     [System.Serializable]
     public class CartesiaVoice
     {
         public string mode;
-        public string id; // Only needed if mode is "id"
-        // Add more fields if necessary based on API documentation
+        public string id;
     }
 
-    /// <summary>
-    /// Represents the output format configuration for Cartesia's TTS API.
-    /// </summary>
     [System.Serializable]
     public class CartesiaOutputFormat
     {
