@@ -1,6 +1,6 @@
 # Boogie Battle 🕺
 
-> ## 🏅 Winner of Best Use of Cartesia Sonic at MHacks 2024
+> ## 🏅 [Winner of Best Use of Cartesia Sonic at MHacks 2024](https://devpost.com/software/boogie-battle)
 
 
 <img width="700" alt="Screenshot 2024-09-29 at 10 39 12 AM" src="https://github.com/user-attachments/assets/3de4b622-6dba-4a86-93ce-76912802d53b">
